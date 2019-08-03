@@ -62,7 +62,9 @@ export default {
     // Doc: https://
     '@nuxtjs/apollo',
     // Doc: https://
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    //
+    'nuxt-fontawesome'
   ],
   // Give apollo module options
   apollo: {
@@ -148,6 +150,14 @@ export default {
       'markdown-it-toc' // 目次を作るためのライブラリ。別途インストールが必要
     ]
   },
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      }
+    ]
+  },
   /*
    ** Axios module configuration
    */
@@ -159,6 +169,8 @@ export default {
    ** Build configuration
    */
   build: {
+    publicPath: '/public',
+    extractCSS: true,
     /*
      ** You can extend webpack config here
      */

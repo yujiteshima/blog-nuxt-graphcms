@@ -1,9 +1,9 @@
 <template>
   <b-container>
-    <b-row>
+    <!-- <b-row>
       <b-col class="text-center display-4">New Post</b-col>
-    </b-row>
-    <b-row>
+    </b-row>-->
+    <b-row class="mt-4">
       <b-card-group deck>
         <b-col
           v-for="post in posts"
@@ -13,22 +13,45 @@
         >
           <b-card no-body class="mb-2 item-card zoom" @click="detail(post.id)">
             <!-- <p>{{ post.thumbnail }}</p> -->
-            <b-card-img
+            <b-img :src="post.thumbnail.url" center fluid></b-img>
+            <!-- <b-card-img
               :src="post.thumbnail.url"
               img-alt="Image"
-              height="200px"
-              width="200px"
+              center
+              fluid
               img-top
-            ></b-card-img>
+            ></b-card-img>-->
             <b-card-body>
-              <b-card-title>{{ post.title }}</b-card-title>
+              <b-card-title class="title">{{ post.title }}</b-card-title>
               <b-card-text>
-                {{ post.title }}
+                <!-- {{ post.title }}
+                <br />-->
+                <div class="descript">{{ post.description }}</div>
                 <br />
-                {{ dateFormat(post.createdAt, 'YYYY/MM/DD hh:mm:ss') }}
-                <br />
-                {{ post.description }}
-                <br />
+                <font-awesome-icon
+                  icon="calendar-alt"
+                  class="tags"
+                ></font-awesome-icon>
+                <span class="date">
+                  {{ dateFormat(post.date, 'YYYY/MM/DD') }}
+                </span>
+                <font-awesome-icon
+                  v-if="post.tag1"
+                  icon="tags"
+                  class="tags"
+                ></font-awesome-icon>
+                <b-badge v-if="post.tag1" variant="secondary">
+                  {{ post.tag1 }}
+                </b-badge>
+                <b-badge v-if="post.tag2" variant="secondary">
+                  {{ post.tag2 }}
+                </b-badge>
+                <b-badge v-if="post.tag3" variant="secondary">
+                  {{ post.tag3 }}
+                </b-badge>
+                <b-badge v-if="post.tag4" variant="secondary">
+                  {{ post.tag4 }}
+                </b-badge>
               </b-card-text>
               <!-- <div v-for="tag in post.tag" :key="tag">
                 <b-button variant="primary">{{ tag }}</b-button>
@@ -56,7 +79,7 @@ export default {
   },
   methods: {
     detail(id) {
-      console.log(id)
+      // console.log(id)
       this.$router.push(`./posts/${id}`)
     },
     dateFormat: function(date = new Date(), formatStr) {
@@ -111,9 +134,22 @@ export default {
 .zoom:hover {
   transform: scale(1.01);
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
-  background-color: rgba(0, 0, 0, 0.05);
+  // background-color: rgba(0, 0, 0, 0.05);
 }
 .point {
   cursor: pointer;
+}
+.tags {
+  font-size: 0.5rem;
+}
+.title {
+  font-size: 16px;
+  font-weight: bolder;
+}
+.descript {
+  font-size: 12px;
+}
+.date {
+  font-size: 14px;
 }
 </style>

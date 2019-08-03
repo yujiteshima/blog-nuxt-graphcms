@@ -1,16 +1,12 @@
 <template>
   <div>
-    <!-- <transition name="view"> -->
-    <Top v-if="isTop" />
-    <DetailTop v-else />
-    <!-- </transition> -->
+    <DetailTop />
     <!-- <Header /> -->
     <!-- <Title /> -->
     <nuxt />
   </div>
 </template>
 <script>
-import Top from '../components/Top'
 import DetailTop from '../components/DetailTop'
 // import Header from '../components/Header'
 // import Title from '../components/Title'
@@ -18,17 +14,7 @@ export default {
   components: {
     // Header,
     // Title,
-    Top,
     DetailTop
-  },
-  computed: {
-    isTop() {
-      if (this.$route.path === '/') {
-        return true
-      } else {
-        return false
-      }
-    }
   }
 }
 </script>
@@ -83,20 +69,4 @@ body {
   color: #fff;
   background-color: #35495e;
 }
-
-/* .view-enter-active,
-.view-leave-active {
-  transition: opacity 0.5s;
-}
-.view-leave-active {
-  transition: opacity 1s, transform 1s;
-}
-.view-enter {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-.view-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
-} */
 </style>

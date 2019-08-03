@@ -1,19 +1,23 @@
 <template>
   <b-container>
-    <b-row>
+    <b-row class="pt-4">
       <b-col cols="10" offset="1">
-        <b-col cols="12">img_url: {{ post.thumbnail.url }}</b-col>
+        <!-- <b-col cols="12">img_url: {{ post.thumbnail.url }}</b-col>
         <b-col cols="12">id: {{ this.$route.params.id }}</b-col>
         <b-col cols="12">title: {{ post.title }}</b-col>
-        <b-col cols="12">description: {{ post.description }}</b-col>
+        <b-col cols="12">description: {{ post.description }}</b-col>-->
         <!-- <b-col cols="12">content: {{ post.content }}</b-col> -->
+        <!-- <b-col cols="12">
+          <b-img :src="post.thumbnail.url" fluid></b-img>
+        </b-col>-->
+
         <b-col cols="12">
           <div v-html="$md.render(post.content)"></div>
         </b-col>
-        <b-col cols="12"
-          >createdAt:
-          {{ dateFormat(post.createdAt, 'YYYY/MM/DD hh:mm:ss') }}</b-col
-        >
+        <b-col cols="12">
+          createdAt:
+          {{ dateFormat(post.createdAt, 'YYYY/MM/DD') }}
+        </b-col>
       </b-col>
     </b-row>
   </b-container>
@@ -45,3 +49,20 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+// h1 {
+//   font-size: 26px;
+// }
+// h2 {
+//   font-size: 26px;
+//   border-bottom: solid 2px #333;
+// }
+// h3 {
+//   font-size: 23px;
+//   border-bottom: solid 1px #333;
+// }
+// p {
+//   font-size: 16px;
+// }
+</style>
