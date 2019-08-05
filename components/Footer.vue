@@ -1,21 +1,17 @@
 <template>
   <b-container fluid>
-    <b-row id="top" class="header">
+    <b-row class="header">
       <b-col cols="12" class="d-flex align-items-center justify-content-center">
         <b-row>
-          <b-col cols="12" class="blog-title text-center">Teshi Blog</b-col>
-          <b-col cols="12" class="blog-sub-title text-center"
-            >Nuxt.js + GraphCMS + Firebase</b-col
-          >
-          <!-- <b-col cols="12" class="text-center blog-sub-title pt-5"
-            >日々勉強した事や、気づいた事の覚書</b-col
-          >-->
+          <b-col cols="12" class="blog-title text-center">
+            <nuxt-link v-scroll-to="'#top'" to>Teshi Blog</nuxt-link>
+          </b-col>
+          <b-col cols="12" class="blog-sub-title text-center">
+            <small>Copyright &copy; 2019 Yuji Teshima</small>
+          </b-col>
         </b-row>
       </b-col>
     </b-row>
-    <!-- <div class="text-center header"> -->
-    <!-- <img src="../assets/images/IMG_5384.jpg" /> -->
-    <!-- </div> -->
   </b-container>
 </template>
 
@@ -42,12 +38,24 @@ export default {}
   // background-size: cover;
   // background-attachment: fixed;
   color: cornsilk;
-  height: 60vh;
+  height: 20vh;
 }
 .blog-title {
-  font-size: 4em;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
 }
 .blog-sub-title {
-  font-size: 16px;
+  font-size: 18px;
+}
+a {
+  color: cornsilk;
+  text-decoration: none;
+  transition: 0.5s ease-in-out; /* どれだけ時間をかけて変化するか*/
+  &:hover {
+    color: coral;
+    border-bottom: 1px solid coral;
+    letter-spacing: 1px;
+  }
 }
 </style>

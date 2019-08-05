@@ -49,7 +49,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/prism'],
+  plugins: ['~/plugins/prism', '~/plugins/vue-scrollto'],
 
   /*
    ** Nuxt.js modules

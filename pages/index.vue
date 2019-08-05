@@ -8,7 +8,8 @@
         <b-col
           v-for="post in posts"
           :key="post.id"
-          sm="4"
+          sm="6"
+          md="4"
           class="text-center d-flex justify-content-center my-3 point"
         >
           <b-card no-body class="mb-2 item-card zoom" @click="detail(post.id)">
@@ -35,6 +36,7 @@
                 <span class="date">
                   {{ dateFormat(post.date, 'YYYY/MM/DD') }}
                 </span>
+                <br />
                 <font-awesome-icon
                   v-if="post.tag1"
                   icon="tags"

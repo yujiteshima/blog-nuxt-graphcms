@@ -14,10 +14,10 @@
         <b-col cols="12">
           <div v-html="$md.render(post.content)"></div>
         </b-col>
-        <b-col cols="12">
+        <!-- <b-col cols="12">
           createdAt:
           {{ dateFormat(post.createdAt, 'YYYY/MM/DD') }}
-        </b-col>
+        </b-col>-->
       </b-col>
     </b-row>
   </b-container>

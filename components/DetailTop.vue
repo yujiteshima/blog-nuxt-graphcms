@@ -1,7 +1,7 @@
 <template>
   <b-container fluid class="header">
     <b-container>
-      <b-row class="fade-in">
+      <b-row id="top" class="fade-in">
         <b-col
           cols="12"
           class="detail-text d-flex align-items-center justify-content-left"
@@ -24,18 +24,18 @@
                   class="tags"
                 ></font-awesome-icon>
               </span>
-              <b-badge v-if="post.tag1" variant="secondary">
-                {{ post.tag1 }}
-              </b-badge>
-              <b-badge v-if="post.tag2" variant="secondary">
-                {{ post.tag2 }}
-              </b-badge>
-              <b-badge v-if="post.tag3" variant="secondary">
-                {{ post.tag3 }}
-              </b-badge>
-              <b-badge v-if="post.tag4" variant="secondary">
-                {{ post.tag4 }}
-              </b-badge>
+              <b-badge v-if="post.tag1" variant="secondary">{{
+                post.tag1
+              }}</b-badge>
+              <b-badge v-if="post.tag2" variant="secondary">{{
+                post.tag2
+              }}</b-badge>
+              <b-badge v-if="post.tag3" variant="secondary">{{
+                post.tag3
+              }}</b-badge>
+              <b-badge v-if="post.tag4" variant="secondary">{{
+                post.tag4
+              }}</b-badge>
             </b-col>
           </b-row>
         </b-col>
@@ -122,9 +122,11 @@ export default {
   cursor: pointer;
   font-size: 18px;
   font-weight: bolder;
+  transition: 0.5s ease-in-out; /* どれだけ時間をかけて変化するか*/
   &:hover {
     color: coral;
     border-bottom: 1px solid coral;
+    letter-spacing: 1px;
   }
 }
 .title {

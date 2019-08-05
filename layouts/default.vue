@@ -7,11 +7,13 @@
     <!-- <Header /> -->
     <!-- <Title /> -->
     <nuxt />
+    <Footer />
   </div>
 </template>
 <script>
 import Top from '../components/Top'
 import DetailTop from '../components/DetailTop'
+import Footer from '../components/Footer'
 // import Header from '../components/Header'
 // import Title from '../components/Title'
 export default {
@@ -19,7 +21,8 @@ export default {
     // Header,
     // Title,
     Top,
-    DetailTop
+    DetailTop,
+    Footer
   },
   computed: {
     isTop() {
