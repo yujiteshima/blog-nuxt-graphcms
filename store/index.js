@@ -23,7 +23,7 @@ export const actions = {
     const response = await this.app.apolloProvider.defaultClient.query({
       query: gql`
         query allPosts {
-          posts(orderBy: date_DESC) {
+          posts(where: { status: PUBLISHED }, orderBy: date_DESC) {
             id
             title
             content
