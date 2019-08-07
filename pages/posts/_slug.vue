@@ -41,6 +41,11 @@ export default {
       return targetPost
     }
   },
+  head() {
+    return {
+      title: this.post.slug
+    }
+  },
   mounted() {
     Prism.highlightAll()
   },

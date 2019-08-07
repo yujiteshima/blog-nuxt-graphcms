@@ -6,7 +6,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: pkg.name,
+    titleTemplate: '%s | Teshi Blog',
     meta: [
       {
         charset: 'utf-8'

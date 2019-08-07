@@ -39,9 +39,9 @@
                   icon="calendar-alt"
                   class="tags"
                 ></font-awesome-icon>
-                <span class="date">{{
-                  dateFormat(post.date, 'YYYY/MM/DD')
-                }}</span>
+                <span class="date">
+                  {{ dateFormat(post.date, 'YYYY/MM/DD') }}
+                </span>
                 <br />
               </b-card-text>
               <!-- <div v-for="tag in post.tag" :key="tag">
@@ -100,6 +100,11 @@ export default {
   components: {},
   computed: {
     ...mapState(['posts'])
+  },
+  head() {
+    return {
+      title: 'TOP'
+    }
   },
   methods: {
     detail(slug) {
