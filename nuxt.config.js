@@ -7,8 +7,7 @@ export default {
    */
   head: {
     title: pkg.name,
-    meta: [
-      {
+    meta: [{
         charset: 'utf-8'
       },
       {
@@ -21,13 +20,11 @@ export default {
         content: pkg.description
       }
     ],
-    link: [
-      {
-        rel: 'icon',
-        type: 'image/x-icon',
-        href: '/favicon.ico'
-      }
-    ]
+    link: [{
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '/favicon.ico'
+    }]
   },
 
   /*
@@ -40,11 +37,9 @@ export default {
   /*
    ** Global CSS
    */
-  css: [
-    {
-      src: '~/assets/css/common.scss'
-    }
-  ],
+  css: [{
+    src: '~/assets/css/common.scss'
+  }],
 
   /*
    ** Plugins to load before mounting the App
@@ -64,7 +59,8 @@ export default {
     // Doc: https://
     '@nuxtjs/markdownit',
     //
-    'nuxt-fontawesome'
+    'nuxt-fontawesome',
+    '@nuxtjs/pwa'
   ],
   // Give apollo module options
   apollo: {
@@ -110,8 +106,7 @@ export default {
     clientConfigs: {
       default: {
         // required
-        httpEndpoint:
-          'https://api-apeast.graphcms.com/v1/cjyh6tlx6261v01f579wx12gy/master',
+        httpEndpoint: 'https://api-apeast.graphcms.com/v1/cjyh6tlx6261v01f579wx12gy/master',
         // optional
         // See https://www.apollographql.com/docs/link/links/http.html#options
         httpLinkOptions: {
@@ -151,18 +146,27 @@ export default {
     ]
   },
   fontawesome: {
-    imports: [
-      {
-        set: '@fortawesome/free-solid-svg-icons',
-        icons: ['fas']
-      }
-    ]
+    imports: [{
+      set: '@fortawesome/free-solid-svg-icons',
+      icons: ['fas']
+    }]
   },
   /*
    ** Axios module configuration
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+  // pwa_config
+  workbox: {
+    dev: true, // 開発環境でも利用可能にするための設定
+  },
+  // pwaのマニフェスト
+  manifest: {
+    name: 'yuji blog',
+    lang: 'ja',
+    'start_url': "/",
+    'display': "standalone",
   },
 
   /*
