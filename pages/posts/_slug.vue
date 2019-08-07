@@ -35,7 +35,9 @@ export default {
   computed: {
     ...mapState(['posts']),
     post() {
-      const targetPost = this.posts.find(v => v.id === this.$route.params.id)
+      const targetPost = this.posts.find(
+        v => v.slug === this.$route.params.slug
+      )
       return targetPost
     }
   },

@@ -12,7 +12,11 @@
           md="4"
           class="text-center d-flex justify-content-center my-3 point"
         >
-          <b-card no-body class="mb-2 item-card zoom" @click="detail(post.id)">
+          <b-card
+            no-body
+            class="mb-2 item-card zoom"
+            @click="detail(post.slug)"
+          >
             <!-- <p>{{ post.thumbnail }}</p> -->
             <b-img :src="post.thumbnail.url" center fluid></b-img>
             <!-- <b-card-img
@@ -33,27 +37,27 @@
                   icon="calendar-alt"
                   class="tags"
                 ></font-awesome-icon>
-                <span class="date">
-                  {{ dateFormat(post.date, 'YYYY/MM/DD') }}
-                </span>
+                <span class="date">{{
+                  dateFormat(post.date, 'YYYY/MM/DD')
+                }}</span>
                 <br />
                 <font-awesome-icon
                   v-if="post.tag1"
                   icon="tags"
                   class="tags"
                 ></font-awesome-icon>
-                <b-badge v-if="post.tag1" variant="secondary">
-                  {{ post.tag1 }}
-                </b-badge>
-                <b-badge v-if="post.tag2" variant="secondary">
-                  {{ post.tag2 }}
-                </b-badge>
-                <b-badge v-if="post.tag3" variant="secondary">
-                  {{ post.tag3 }}
-                </b-badge>
-                <b-badge v-if="post.tag4" variant="secondary">
-                  {{ post.tag4 }}
-                </b-badge>
+                <b-badge v-if="post.tag1" variant="secondary">{{
+                  post.tag1
+                }}</b-badge>
+                <b-badge v-if="post.tag2" variant="secondary">{{
+                  post.tag2
+                }}</b-badge>
+                <b-badge v-if="post.tag3" variant="secondary">{{
+                  post.tag3
+                }}</b-badge>
+                <b-badge v-if="post.tag4" variant="secondary">{{
+                  post.tag4
+                }}</b-badge>
               </b-card-text>
               <!-- <div v-for="tag in post.tag" :key="tag">
                 <b-button variant="primary">{{ tag }}</b-button>
@@ -80,9 +84,9 @@ export default {
     ...mapState(['posts'])
   },
   methods: {
-    detail(id) {
+    detail(slug) {
       // console.log(id)
-      this.$router.push(`./posts/${id}`)
+      this.$router.push(`./posts/${slug}`)
     },
     dateFormat: function(date = new Date(), formatStr) {
       return format(parse(date), formatStr, { locale: ja })

@@ -24,18 +24,18 @@
                   class="tags"
                 ></font-awesome-icon>
               </span>
-              <b-badge v-if="post.tag1" variant="secondary">{{
-                post.tag1
-              }}</b-badge>
-              <b-badge v-if="post.tag2" variant="secondary">{{
-                post.tag2
-              }}</b-badge>
-              <b-badge v-if="post.tag3" variant="secondary">{{
-                post.tag3
-              }}</b-badge>
-              <b-badge v-if="post.tag4" variant="secondary">{{
-                post.tag4
-              }}</b-badge>
+              <b-badge v-if="post.tag1" variant="secondary">
+                {{ post.tag1 }}
+              </b-badge>
+              <b-badge v-if="post.tag2" variant="secondary">
+                {{ post.tag2 }}
+              </b-badge>
+              <b-badge v-if="post.tag3" variant="secondary">
+                {{ post.tag3 }}
+              </b-badge>
+              <b-badge v-if="post.tag4" variant="secondary">
+                {{ post.tag4 }}
+              </b-badge>
             </b-col>
           </b-row>
         </b-col>
@@ -56,7 +56,9 @@ export default {
   computed: {
     ...mapState(['posts']),
     post() {
-      const targetPost = this.posts.find(v => v.id === this.$route.params.id)
+      const targetPost = this.posts.find(
+        v => v.slug === this.$route.params.slug
+      )
       return targetPost
     }
   },

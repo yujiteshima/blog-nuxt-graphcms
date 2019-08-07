@@ -26,6 +26,7 @@ export const actions = {
           posts(where: { status: PUBLISHED }, orderBy: date_DESC) {
             id
             title
+            slug
             content
             description
             createdAt
