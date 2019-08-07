@@ -10,15 +10,17 @@
           :key="post.id"
           sm="6"
           md="4"
-          class="text-center d-flex justify-content-center my-3 point"
+          class="text-center d-flex justify-content-center my-3"
         >
-          <b-card
-            no-body
-            class="mb-2 item-card zoom"
-            @click="detail(post.slug)"
-          >
+          <b-card no-body class="mb-2 item-card zoom">
             <!-- <p>{{ post.thumbnail }}</p> -->
-            <b-img :src="post.thumbnail.url" center fluid></b-img>
+            <b-img
+              :src="post.thumbnail.url"
+              center
+              fluid
+              class="point"
+              @click="detail(post.slug)"
+            ></b-img>
             <!-- <b-card-img
               :src="post.thumbnail.url"
               img-alt="Image"
@@ -41,27 +43,43 @@
                   dateFormat(post.date, 'YYYY/MM/DD')
                 }}</span>
                 <br />
-                <font-awesome-icon
-                  v-if="post.tag1"
-                  icon="tags"
-                  class="tags"
-                ></font-awesome-icon>
-                <b-badge v-if="post.tag1" variant="secondary">{{
-                  post.tag1
-                }}</b-badge>
-                <b-badge v-if="post.tag2" variant="secondary">{{
-                  post.tag2
-                }}</b-badge>
-                <b-badge v-if="post.tag3" variant="secondary">{{
-                  post.tag3
-                }}</b-badge>
-                <b-badge v-if="post.tag4" variant="secondary">{{
-                  post.tag4
-                }}</b-badge>
               </b-card-text>
               <!-- <div v-for="tag in post.tag" :key="tag">
                 <b-button variant="primary">{{ tag }}</b-button>
               </div>-->
+              <font-awesome-icon
+                v-if="post.tag1"
+                icon="tags"
+                class="tags"
+              ></font-awesome-icon>
+              <b-badge
+                v-if="post.tag1"
+                variant="secondary"
+                class="badge"
+                @click="select(post.tag1)"
+                >{{ post.tag1 }}</b-badge
+              >
+              <b-badge
+                v-if="post.tag2"
+                variant="secondary"
+                class="badge"
+                @click="select(post.tag2)"
+                >{{ post.tag2 }}</b-badge
+              >
+              <b-badge
+                v-if="post.tag3"
+                variant="secondary"
+                class="badge"
+                @click="select(post.tag3)"
+                >{{ post.tag3 }}</b-badge
+              >
+              <b-badge
+                v-if="post.tag4"
+                variant="secondary"
+                class="badge"
+                @click="select(post.tag4)"
+                >{{ post.tag4 }}</b-badge
+              >
             </b-card-body>
           </b-card>
         </b-col>
@@ -90,6 +108,10 @@ export default {
     },
     dateFormat: function(date = new Date(), formatStr) {
       return format(parse(date), formatStr, { locale: ja })
+    },
+    select(tag) {
+      alert(tag)
+      this.$router.push(`/`)
     }
   }
   // apollo: {
@@ -144,6 +166,9 @@ export default {
 }
 .point {
   cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 .tags {
   font-size: 0.5rem;
@@ -157,5 +182,16 @@ export default {
 }
 .date {
   font-size: 14px;
+}
+.badge {
+  cursor: pointer;
+  transform: scale(1);
+  transition: 0.3s ease-in-out;
+  &:hover {
+    //opacity: 0.8;
+    transform: scale(1.1);
+    color: coral;
+    letter-spacing: 1px;
+  }
 }
 </style>

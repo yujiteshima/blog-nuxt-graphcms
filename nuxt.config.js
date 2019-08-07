@@ -64,7 +64,8 @@ export default {
     // Doc: https://
     '@nuxtjs/markdownit',
     //
-    'nuxt-fontawesome'
+    'nuxt-fontawesome',
+    '@nuxtjs/pwa'
   ],
   // Give apollo module options
   apollo: {
@@ -163,6 +164,17 @@ export default {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+  // pwa_config
+  workbox: {
+    // dev: true // 開発環境でも利用可能にするための設定
+  },
+  // pwaのマニフェスト
+  manifest: {
+    name: 'yuji blog',
+    lang: 'ja',
+    start_url: '/',
+    display: 'standalone'
   },
 
   /*
