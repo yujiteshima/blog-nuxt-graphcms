@@ -1,15 +1,18 @@
 <template>
   <b-container>
     <!-- <b-row>
+      <b-col class="text-center pt-3">All items</b-col>
+    </b-row>-->
+    <!-- <b-row>
       <b-col class="text-center display-4">New Post</b-col>
     </b-row>-->
-    <b-row class="mt-4">
+    <b-row class="mt-4 d-flex justify-content-center">
       <b-card-group deck>
         <b-col
-          v-for="post in posts"
+          v-for="post in items"
           :key="post.id"
           sm="6"
-          md="4"
+          :md="colParm"
           class="text-center d-flex justify-content-center my-3"
         >
           <b-card no-body class="mb-2 item-card zoom">
@@ -19,6 +22,7 @@
               center
               fluid
               class="point"
+              alt="category Image"
               @click="detail(post.slug)"
             ></b-img>
             <!-- <b-card-img
@@ -33,7 +37,7 @@
               <b-card-text>
                 <!-- {{ post.title }}
                 <br />-->
-                <div class="descript">{{ post.description }}</div>
+                <span class="descript">{{ post.description }}</span>
                 <br />
                 <font-awesome-icon
                   icon="calendar-alt"
@@ -98,14 +102,32 @@ import { mapState } from 'vuex'
 // import { ALL_POSTS } from '../constants/graphql'
 export default {
   components: {},
+  scrollToTop: true,
+  // data() {
+  //   return {
+  //     items: []
+  //   }
+  // },
   computed: {
-    ...mapState(['posts'])
+    ...mapState(['posts', 'items']),
+    colParm() {
+      let colnum = '4'
+      if (this.items.length === 2) {
+        colnum = '6'
+      } else if (this.items.length === 1) {
+        colnum = '12'
+      }
+      return colnum
+    }
   },
   head() {
     return {
       title: 'TOP'
     }
   },
+  // created: function() {
+  //   this.items = this.posts
+  // },
   methods: {
     detail(slug) {
       // console.log(id)
@@ -114,9 +136,15 @@ export default {
     dateFormat: function(date = new Date(), formatStr) {
       return format(parse(date), formatStr, { locale: ja })
     },
-    select(tag) {
-      alert(tag)
-      this.$router.push(`/`)
+    async select(tag) {
+      const selectPosts = await this.posts.filter(
+        v =>
+          v.tag1 === tag || v.tag2 === tag || v.tag3 === tag || v.tag4 === tag
+      )
+      // this.items = selectPosts
+      this.$store.dispatch('selectPosts', selectPosts)
+      this.$store.commit('setWord', tag)
+      // this.$scrollTo('#top', 500, { easing: 'linear' })
     }
   }
   // apollo: {
@@ -199,4 +227,22 @@ export default {
     letter-spacing: 1px;
   }
 }
+
+/* トランジション用スタイル */
+// .v-enter-active,
+// .v-leave-active,
+// .v-move {
+//   transition: opacity 1s, transform 1s;
+// }
+// .v-leave-active {
+//   position: absolute;
+// }
+// .v-enter {
+//   opacity: 0;
+//   transform: translateY(-20px);
+// }
+// .v-leave-to {
+//   opacity: 0;
+//   transform: translateY(20px);
+// }
 </style>

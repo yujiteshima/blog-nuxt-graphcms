@@ -1,10 +1,14 @@
 import gql from 'graphql-tag'
 
 export const state = () => ({
-  posts: []
+  posts: [],
+  items: [],
+  selectWord: false
 })
 export const getters = {
-  posts: state => state.posts
+  getPosts: state => state.posts,
+  getItems: state => state.items,
+  getSelectWord: state => state.selectWord
 }
 export const mutations = {
   setPosts(state, response) {
@@ -13,8 +17,19 @@ export const mutations = {
     // console.log('SetPosts!')
     // console.log('response @mutations:' + response)
     state.posts = response
+    state.items = response
     // console.log('set!')
     // console.log('response @mutations:' + response.data)
+  },
+  setItems(state, response) {
+    state.items = response
+  },
+  allItems(state) {
+    state.items = state.posts
+    state.selectWord = false
+  },
+  setWord(state, response) {
+    state.selectWord = response
   }
 }
 
@@ -46,5 +61,11 @@ export const actions = {
     // console.log(response.data.posts)
 
     commit('setPosts', response.data.posts)
+  },
+  selectPosts({ commit }, items) {
+    commit('setItems', items)
+  },
+  allItems({ commit }) {
+    commit('allItems')
   }
 }
