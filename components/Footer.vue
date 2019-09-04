@@ -32,11 +32,6 @@ export default {}
     #514a9d,
     #24c6dc
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-  // background-color: cadetblue;
-  // background-image: url('../assets/images/IMG_5384.jpg');
-  // background-size: cover;
-  // background-attachment: fixed;
   color: cornsilk;
   height: 20vh;
 }

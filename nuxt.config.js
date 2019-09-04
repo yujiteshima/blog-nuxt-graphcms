@@ -7,7 +7,8 @@ export default {
    */
   head: {
     titleTemplate: '%s | Teshi Blog',
-    meta: [{
+    meta: [
+      {
         charset: 'utf-8'
       },
       {
@@ -20,11 +21,18 @@ export default {
         content: pkg.description
       }
     ],
-    link: [{
-      rel: 'icon',
-      type: 'image/x-icon',
-      href: '/favicon.ico'
-    }]
+
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css?family=Economica&display=swap'
+      }
+    ]
   },
 
   /*
@@ -37,9 +45,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: [{
-    src: '~/assets/css/common.scss'
-  }],
+  css: [
+    {
+      src: '~/assets/css/common.scss'
+    }
+  ],
 
   /*
    ** Plugins to load before mounting the App
@@ -106,7 +116,8 @@ export default {
     clientConfigs: {
       default: {
         // required
-        httpEndpoint: 'https://api-apeast.graphcms.com/v1/cjyh6tlx6261v01f579wx12gy/master',
+        httpEndpoint:
+          'https://api-apeast.graphcms.com/v1/cjyh6tlx6261v01f579wx12gy/master',
         // optional
         // See https://www.apollographql.com/docs/link/links/http.html#options
         httpLinkOptions: {
@@ -146,10 +157,12 @@ export default {
     ]
   },
   fontawesome: {
-    imports: [{
-      set: '@fortawesome/free-solid-svg-icons',
-      icons: ['fas']
-    }]
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      }
+    ]
   },
   /*
    ** Axios module configuration
@@ -159,28 +172,16 @@ export default {
   },
   // pwa_config
   workbox: {
-    <<
-    << << < HEAD
     // dev: true // 開発環境でも利用可能にするための設定
-    ===
-    === =
-    dev: true, // 開発環境でも利用可能にするための設定
-    >>>
-    >>> > 7 afb8fd46d5bbae85dd1ec9406b75b0c17b2c69c
   },
   // pwaのマニフェスト
   manifest: {
     name: 'yuji blog',
     lang: 'ja',
-    <<
-    << << < HEAD
-    start_url: '/',
-    display: 'standalone' ===
-      === =
-      'start_url': "/",
-    'display': "standalone",
-    >>>
-    >>> > 7 afb8fd46d5bbae85dd1ec9406b75b0c17b2c69c
+    // start_url: '/',
+    display: 'standalone',
+    start_url: '/'
+    // display: 'standalone'
   },
 
   /*

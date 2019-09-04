@@ -1,32 +1,41 @@
 <template>
   <div>
-    <!-- <transition name="view"> -->
     <Top v-if="isTop" />
-    <DetailTop v-else />
-    <!-- </transition> -->
-    <!-- <Header /> -->
-    <!-- <Title /> -->
+    <DetailTop v-if="isDetail" />
+    <!-- <PortfolioTop v-if="isPortFolio_bk" /> -->
     <nuxt />
-    <Footer />
+    <Footer v-if="!isPortFolio" />
   </div>
 </template>
 <script>
 import Top from '../components/Top'
 import DetailTop from '../components/DetailTop'
 import Footer from '../components/Footer'
-// import Header from '../components/Header'
-// import Title from '../components/Title'
+// import PortfolioTop from '../components/PortfolioTop'
 export default {
   components: {
-    // Header,
-    // Title,
     Top,
     DetailTop,
+    // PortfolioTop,
     Footer
   },
   computed: {
     isTop() {
       if (this.$route.path === '/') {
+        return true
+      } else {
+        return false
+      }
+    },
+    isDetail() {
+      if (this.$route.path.match(/posts/)) {
+        return true
+      } else {
+        return false
+      }
+    },
+    isPortFolio() {
+      if (this.$route.path.match(/portfolio/)) {
         return true
       } else {
         return false
@@ -37,8 +46,11 @@ export default {
 </script>
 <style>
 html {
-  font-family: sans-serif, 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  /* font-family: sans-serif, 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; */
+  font-family: Quicksand, 游ゴシック体, 'Yu Gothic', YuGothic,
+    'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo,
+    Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
@@ -86,20 +98,4 @@ body {
   color: #fff;
   background-color: #35495e;
 }
-
-/* .view-enter-active,
-.view-leave-active {
-  transition: opacity 0.5s;
-}
-.view-leave-active {
-  transition: opacity 1s, transform 1s;
-}
-.view-enter {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-.view-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
-} */
 </style>

@@ -12,14 +12,8 @@ export const getters = {
 }
 export const mutations = {
   setPosts(state, response) {
-    // console.log(response)
-    // console.log(response.data)
-    // console.log('SetPosts!')
-    // console.log('response @mutations:' + response)
     state.posts = response
     state.items = response
-    // console.log('set!')
-    // console.log('response @mutations:' + response.data)
   },
   setItems(state, response) {
     state.items = response
@@ -57,9 +51,6 @@ export const actions = {
         }
       `
     })
-    // console.log(response)
-    // console.log(response.data.posts)
-
     commit('setPosts', response.data.posts)
   },
   selectPosts({ commit }, items) {

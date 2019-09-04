@@ -3,22 +3,20 @@
     <b-row id="top" class="header">
       <b-col cols="12" class="d-flex align-items-center justify-content-center">
         <b-row>
-          <b-col cols="12" class="blog-title text-center">Teshi Blog</b-col>
-          <b-col cols="12" class="blog-sub-title text-center pb-5"
-            >Nuxt.js + GraphCMS + Firebase</b-col
+          <b-col cols="12" class="blog-title text-center"
+            >Yuji Teshima Portfolio Page</b-col
           >
-          <b-col v-show="getSelectWord" cols="12" class="pt-5 text-center">
+          <b-col cols="12" class="blog-sub-title text-center pb-5"
+            >Nuxt.js + Firebase</b-col
+          >
+          <!-- <b-col v-show="getSelectWord" cols="12" class="pt-5 text-center">
             <span class="message">You are narrowing down....</span>
           </b-col>
-          <b-col
-            v-show="getSelectWord"
-            cols="12"
-            class="selectInfo text-center"
-          >
+          <b-col v-show="getSelectWord" cols="12" class="selectInfo text-center">
             <span class="all-item" @click="allItems">All Items</span>
             <span class="pipe">|</span>
             <span class="select-word">{{ getSelectWord }}</span>
-          </b-col>
+          </b-col>-->
         </b-row>
       </b-col>
     </b-row>
@@ -26,16 +24,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 export default {
-  computed: {
-    ...mapGetters(['getSelectWord'])
-  },
-  methods: {
-    allItems() {
-      this.$store.dispatch('allItems')
-    }
-  }
+  // computed: {
+  //   ...mapGetters(['getSelectWord'])
+  // },
+  // methods: {
+  //   allItems() {
+  //     this.$store.dispatch('allItems')
+  //   }
+  // }
 }
 </script>
 
