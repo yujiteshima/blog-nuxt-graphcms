@@ -1,166 +1,134 @@
 <template>
-  <b-container>
-    <b-row class="mt-4 d-flex justify-content-center">
-      <b-card-group deck>
-        <b-col
-          v-for="post in items"
-          :key="post.id"
-          sm="6"
-          :md="colParm"
-          class="text-center d-flex justify-content-center my-3"
-        >
-          <b-card
-            no-body
-            class="mb-2 item-card zoom point"
-            @click="detail(post.slug)"
+  <b-container fluid>
+    <b-row id="top" class="header">
+      <b-col cols="12" class="d-flex align-items-center justify-content-center">
+        <b-row>
+          <b-col cols="12" class="blog-title text-center"
+            >Yuji Teshima Portfolio Page</b-col
           >
-            <b-img
-              :src="post.thumbnail.url"
-              center
-              fluid
-              alt="category Image"
-            ></b-img>
-            <b-card-body>
-              <b-card-title class="title">{{ post.title }}</b-card-title>
-              <b-card-text>
-                <span class="descript">{{ post.description }}</span>
-                <br />
-                <font-awesome-icon
-                  icon="calendar-alt"
-                  class="tags"
-                ></font-awesome-icon>
-                <span class="date">
-                  {{ dateFormat(post.date, 'YYYY/MM/DD') }}
-                </span>
-                <br />
-              </b-card-text>
-
-              <font-awesome-icon
-                v-if="post.tag1"
-                icon="tags"
-                class="tags"
-              ></font-awesome-icon>
-              <b-badge
-                v-if="post.tag1"
-                variant="secondary"
-                class="badge"
-                @click.stop="select(post.tag1)"
-                >{{ post.tag1 }}</b-badge
+          <b-col cols="12" class="blog-sub-title text-center pb-5"
+            >Nuxt.js + Firebase</b-col
+          >
+          <b-col
+            cols="12"
+            class="d-flex align-items-center justify-content-center"
+          >
+            <b-row class="top-nav">
+              <b-col cols="3" class="top-menu" @click="toBlog">Blog</b-col>
+              <b-col cols="3" class="top-menu" @click="toAbout">About</b-col>
+              <b-col cols="3" class="top-menu" @click="toWorks">Works</b-col>
+              <b-col cols="3" class="top-menu" @click="toContact"
+                >Contact</b-col
               >
-              <b-badge
-                v-if="post.tag2"
-                variant="secondary"
-                class="badge"
-                @click.stop="select(post.tag2)"
-                >{{ post.tag2 }}</b-badge
-              >
-              <b-badge
-                v-if="post.tag3"
-                variant="secondary"
-                class="badge"
-                @click.stop="select(post.tag3)"
-                >{{ post.tag3 }}</b-badge
-              >
-              <b-badge
-                v-if="post.tag4"
-                variant="secondary"
-                class="badge"
-                @click.stop="select(post.tag4)"
-                >{{ post.tag4 }}</b-badge
-              >
-            </b-card-body>
-          </b-card>
-        </b-col>
-      </b-card-group>
+            </b-row>
+          </b-col>
+        </b-row>
+      </b-col>
     </b-row>
   </b-container>
 </template>
 
 <script>
-import format from 'date-fns/format'
-import ja from 'date-fns/locale/ja'
-import parse from 'date-fns/parse'
-
-import { mapState } from 'vuex'
-
+// import { mapGetters } from 'vuex'
 export default {
-  components: {},
-  scrollToTop: true,
-
-  computed: {
-    ...mapState(['posts', 'items']),
-    colParm() {
-      let colnum = '4'
-      if (this.items.length === 2) {
-        colnum = '6'
-      } else if (this.items.length === 1) {
-        colnum = '12'
-      }
-      return colnum
-    }
-  },
-  head() {
-    return {
-      title: 'TOP'
-    }
-  },
   methods: {
-    detail(slug) {
-      this.$router.push(`./posts/${slug}`)
+    toBlog() {
+      this.$router.push(`./posts`)
     },
-    dateFormat: function(date = new Date(), formatStr) {
-      return format(parse(date), formatStr, { locale: ja })
+    toAbout() {
+      this.$router.push(`./posts/about-page`)
     },
-    async select(tag) {
-      const selectPosts = await this.posts.filter(
-        v =>
-          v.tag1 === tag || v.tag2 === tag || v.tag3 === tag || v.tag4 === tag
-      )
-
-      this.$store.dispatch('selectPosts', selectPosts)
-      this.$store.commit('setWord', tag)
+    toWorks() {
+      this.$router.push(`./works`)
+    },
+    toContact() {
+      this.$router.push(`./posts/contact`)
     }
   }
+  // computed: {
+  //   ...mapGetters(['getSelectWord'])
+  // },
+  // methods: {
+  //   allItems() {
+  //     this.$store.dispatch('allItems')
+  //   }
+  // }
 }
 </script>
 
 <style lang="scss" scoped>
-.zoom {
-  transform: scale(1);
-  transition: 0.3s ease-in-out;
+.header {
+  background: #24c6dc; /* fallback for old browsers */
+  background: linear-gradient(to right, #15ddbc 0%, #24c6dc 100%);
+  opacity: 0.5;
+  animation: huerotator 20s infinite alternate;
+  color: cornsilk;
+  height: 100vh;
 }
-.zoom:hover {
-  transform: scale(1.01);
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
-}
-.point {
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
+@keyframes huerotator {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
   }
 }
-.tags {
-  font-size: 0.5rem;
+.blog-title {
+  font-size: 4em;
+  text-shadow: 3px 3px 5px #000;
+  //font-family: Economica, sans-serif;
 }
-.title {
+@media screen and (max-width: 768px) {
+  .blog-title {
+    font-size: 2em;
+    text-shadow: 3px 3px 5px #000;
+  }
+}
+.blog-sub-title {
   font-size: 16px;
-  font-weight: bolder;
+  text-shadow: 3px 3px 5px #000;
 }
-.descript {
-  font-size: 12px;
+
+.selectInfo {
+  font-size: 18px;
+  .all-item {
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    &:hover {
+      color: coral;
+      border-bottom: 1px solid coral;
+      letter-spacing: 1px;
+    }
+  }
+  .pipe {
+    font-size: 24px;
+  }
+
+  .select-word {
+    border-bottom: 1px solid cornsilk;
+  }
 }
-.date {
-  font-size: 14px;
-}
-.badge {
+
+.top-menu {
+  font-size: 20px;
+  margin: 15px 0;
   cursor: pointer;
-  transform: scale(1);
-  transition: 0.3s ease-in-out;
+  transition: 0.5s ease-in-out;
+  text-shadow: 3px 3px 5px #000;
+
   &:hover {
-    //opacity: 0.8;
-    transform: scale(1.1);
     color: coral;
-    letter-spacing: 1px;
+    margin: 14px 0;
+    border-bottom: 1px solid coral;
+    letter-spacing: 3px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .top-menu {
+    font-size: 14px;
   }
 }
 </style>
