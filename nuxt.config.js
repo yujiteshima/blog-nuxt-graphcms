@@ -7,7 +7,8 @@ export default {
    */
   head: {
     titleTemplate: '%s | Teshi Blog',
-    meta: [{
+    meta: [
+      {
         charset: 'utf-8'
       },
       {
@@ -21,7 +22,8 @@ export default {
       }
     ],
 
-    link: [{
+    link: [
+      {
         rel: 'icon',
         type: 'image/x-icon',
         href: '/favicon.ico'
@@ -43,9 +45,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: [{
-    src: '~/assets/css/common.scss'
-  }],
+  css: [
+    {
+      src: '~/assets/css/common.scss'
+    }
+  ],
 
   /*
    ** Plugins to load before mounting the App
@@ -112,7 +116,9 @@ export default {
     clientConfigs: {
       default: {
         // required
-        httpEndpoint: 'https://api-apeast.graphcms.com/v1/cjyh6tlx6261v01f579wx12gy/master',
+        // Graphpack側のエンドポイントを指定します。
+        httpEndpoint:
+          'https://api-apeast.graphcms.com/v1/cjyh6tlx6261v01f579wx12gy/master',
         // optional
         // See https://www.apollographql.com/docs/link/links/http.html#options
         httpLinkOptions: {
@@ -148,15 +154,22 @@ export default {
     linkify: true, // URLに似たテキストをリンクに自動変換する
     typography: true, // 言語に依存しないきれいな 置換 + 引用符 を有効にします。
     use: [
-      //'markdown-it-toc' // 目次を作るためのライブラリ。別途インストールが必要
-      "markdown-it-table-of-contents"
+      'markdown-it-toc' // 目次を作るためのライブラリ。別途インストールが必要
+      // "markdown-it-table-of-contents",
+      // 'markdown-it-toc-and-anchor'
     ]
   },
   fontawesome: {
-    imports: [{
-      set: '@fortawesome/free-solid-svg-icons',
-      icons: ['fas']
-    }]
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['fas']
+      }
+      // {
+      //   set: '@fortawesome/free-brands-svg-icons',
+      //   icons: ['fab']
+      // }
+    ]
   },
   /*
    ** Axios module configuration

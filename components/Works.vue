@@ -7,18 +7,14 @@
             Portfolio Top
             <!-- <b-badge variant="secondary">Portfolio Top</b-badge> -->
           </b-col>
-          <b-col cols="4" class="text-center pb-5">
-            <!-- <font-awesome-icon :icon="['fab', 'github-square']" /> -->
-          </b-col>
-          <!-- <b-col cols="4" class="text-center pb-5">Portfolio Top</b-col> -->
-          <b-col cols="12" class="blog-title text-center">Teshi Blog</b-col>
+          <b-col cols="12" class="blog-title text-center">Works Page</b-col>
           <b-col cols="12" class="blog-sub-title text-center pb-5"
             >Nuxt.js + GraphCMS + Firebase</b-col
           >
-          <b-col v-show="getSelectWord" cols="12" class="pt-5 text-center">
+          <!-- <b-col v-show="getSelectWord" cols="12" class="pt-5 text-center">
             <span class="message">You are narrowing down....</span>
-          </b-col>
-          <b-col
+          </b-col>-->
+          <!-- <b-col
             v-show="getSelectWord"
             cols="12"
             class="selectInfo text-center"
@@ -26,7 +22,7 @@
             <span class="all-item" @click="allItems">All Items</span>
             <span class="pipe">|</span>
             <span class="select-word">{{ getSelectWord }}</span>
-          </b-col>
+          </b-col>-->
         </b-row>
       </b-col>
     </b-row>

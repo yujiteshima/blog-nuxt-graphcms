@@ -7,11 +7,11 @@
           class="detail-text d-flex align-items-center justify-content-left"
         >
           <b-row>
-            <b-col cols="12" class="blog-title" @click="goHome">
-              {{ linkName }}
-            </b-col>
+            <b-col cols="12" class="blog-title" @click="goHome"
+              >Teshi Blog</b-col
+            >
             <b-col cols="12" class="title">{{ post.title }}</b-col>
-            <b-col v-if="isAbout" cols="12" class="info">
+            <b-col cols="12" class="info">
               <font-awesome-icon
                 icon="calendar-alt"
                 class="tags"
@@ -24,34 +24,18 @@
                   class="tags"
                 ></font-awesome-icon>
               </span>
-              <b-badge
-                v-if="post.tag1"
-                variant="secondary"
-                class="badge"
-                @click.stop="select(post.tag1)"
-                >{{ post.tag1 }}</b-badge
-              >
-              <b-badge
-                v-if="post.tag2"
-                variant="secondary"
-                class="badge"
-                @click.stop="select(post.tag2)"
-                >{{ post.tag2 }}</b-badge
-              >
-              <b-badge
-                v-if="post.tag3"
-                variant="secondary"
-                class="badge"
-                @click.stop="select(post.tag3)"
-                >{{ post.tag3 }}</b-badge
-              >
-              <b-badge
-                v-if="post.tag4"
-                variant="secondary"
-                class="badge"
-                @click.stop="select(post.tag4)"
-                >{{ post.tag4 }}</b-badge
-              >
+              <b-badge v-if="post.tag1" variant="secondary">{{
+                post.tag1
+              }}</b-badge>
+              <b-badge v-if="post.tag2" variant="secondary">{{
+                post.tag2
+              }}</b-badge>
+              <b-badge v-if="post.tag3" variant="secondary">{{
+                post.tag3
+              }}</b-badge>
+              <b-badge v-if="post.tag4" variant="secondary">{{
+                post.tag4
+              }}</b-badge>
             </b-col>
           </b-row>
         </b-col>
@@ -76,26 +60,6 @@ export default {
         v => v.slug === this.$route.params.slug
       )
       return targetPost
-    },
-    linkName() {
-      if (
-        this.$route.path === '/posts/about-page' ||
-        this.$route.path === '/posts/contact'
-      ) {
-        return 'Yuji Teshima Portfolio'
-      } else {
-        return 'Teshi Blog'
-      }
-    },
-    isAbout() {
-      if (
-        this.$route.path === '/posts/about-page' ||
-        this.$route.path === '/posts/contact'
-      ) {
-        return false
-      } else {
-        return true
-      }
     }
   },
   methods: {
@@ -103,24 +67,7 @@ export default {
       return format(parse(date), formatStr, { locale: ja })
     },
     goHome() {
-      if (
-        this.$route.path === '/posts/about-page' ||
-        this.$route.path === '/posts/contact'
-      ) {
-        this.$router.push('/')
-      } else {
-        this.$router.push('/posts')
-      }
-    },
-    async select(tag) {
-      const selectPosts = await this.posts.filter(
-        v =>
-          v.tag1 === tag || v.tag2 === tag || v.tag3 === tag || v.tag4 === tag
-      )
-
-      this.$store.dispatch('selectPosts', selectPosts)
-      this.$store.commit('setWord', tag)
-      this.$router.push('/posts')
+      this.$router.push('/')
     }
   }
 }
@@ -242,48 +189,6 @@ export default {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-.backhome {
-  cursor: pointer;
-  position: relative;
-  padding: 0.1em 0.3em;
-  display: inline-block;
-  transition: 0.3s;
-  color: #ff8f00;
-}
-.backhome::before,
-.backhome::after {
-  position: absolute;
-  content: '';
-  width: 0;
-  height: 1px;
-  background-color: #ff8f00;
-  transition: 0.3s;
-}
-.backhome::before {
-  top: 0;
-  left: 0;
-}
-.backhome::after {
-  bottom: 0;
-  right: 0;
-}
-.backhome:hover::before,
-.backhome:hover::after {
-  width: 100%;
-}
-
-.badge {
-  cursor: pointer;
-  transform: scale(1);
-  transition: 0.3s ease-in-out;
-  &:hover {
-    //opacity: 0.8;
-    transform: scale(1.1);
-    color: coral;
-    letter-spacing: 1px;
   }
 }
 </style>

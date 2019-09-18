@@ -2,6 +2,8 @@
   <div>
     <Top v-if="isTop" />
     <DetailTop v-if="isDetail" />
+    <DetailW v-if="isDetailW" />
+    <Works v-if="isWorks" />
     <!-- <PortfolioTop v-if="isPortFolio_bk" /> -->
     <nuxt />
     <Footer v-if="!isPortFolio" />
@@ -11,31 +13,49 @@
 import Top from '../components/Top'
 import DetailTop from '../components/DetailTop'
 import Footer from '../components/Footer'
+import Works from '../components/Works'
+import DetailW from '../components/DetailW'
 // import PortfolioTop from '../components/PortfolioTop'
 export default {
   components: {
     Top,
     DetailTop,
+    DetailW,
+    Works,
     // PortfolioTop,
     Footer
   },
   computed: {
     isTop() {
-      if (this.$route.path === '/') {
+      if (this.$route.path === '/posts') {
         return true
       } else {
         return false
       }
     },
     isDetail() {
-      if (this.$route.path.match(/posts/)) {
+      if (this.$route.path.match(/posts\/[A-Za-z0-9]+/)) {
+        return true
+      } else {
+        return false
+      }
+    },
+    isDetailW() {
+      if (this.$route.path.match(/works\/.+$/)) {
         return true
       } else {
         return false
       }
     },
     isPortFolio() {
-      if (this.$route.path.match(/portfolio/)) {
+      if (this.$route.path === '/') {
+        return true
+      } else {
+        return false
+      }
+    },
+    isWorks() {
+      if (this.$route.path === '/works') {
         return true
       } else {
         return false
