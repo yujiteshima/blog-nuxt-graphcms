@@ -2,7 +2,7 @@
   <b-container>
     <b-row class="pt-4">
       <b-col cols="10" offset="1">
-        <b-col cols="12">
+        <b-col cols="12" class="markdown-content">
           <div v-html="$md.render(post.content)"></div>
         </b-col>
       </b-col>
